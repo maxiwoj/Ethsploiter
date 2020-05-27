@@ -1,0 +1,14 @@
+# Creates bridge to span USB interfaces
+
+
+iface lo inet loopback
+
+#allow-hotplug usb0
+iface usb0 inet manual
+#allow-hotplug usb1
+iface usb1 inet manual
+
+iface br0 inet static
+        bridge_ports usb0 usb1
+        address 192.168.20.1
+        netmask 255.255.255.0

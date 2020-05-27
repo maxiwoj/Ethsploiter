@@ -1,4 +1,7 @@
+# Load module dwc2
 echo "dtoverlay=dwc2" >> /boot/config.txt
-sudo sed --in-place "/exit 0/d" /etc/rc.local
-echo "/bin/sh /ethsploiter_startup.sh" > /etc/rc.local
-echo "exit 0" > /etc/rc.local
+
+cd /home/pi
+dd if=/dev/zero of=usbdisk.img bs=1024 count=1024
+mkdosfs ~/usbdisk.img
+

@@ -82,4 +82,4 @@ checkPort 80 $ETHSPLOITER_PATH/exploits/multi/shellshock/shellshock_mod_cgi_bash
 
 #multi
 testInfo "ssh_brute_force"
-checkPort 22 /root/Dokumenty/Ethsploiter/exploits/multi/ssh/login/ssh_brute.sh $VICTIM_ADDRESS
+checkPort 22 $ETHSPLOITER_PATH/exploits/multi/ssh/login/ssh_brute.sh $VICTIM_ADDRESS $ETHSPLOITER_PATH

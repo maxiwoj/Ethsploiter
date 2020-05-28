@@ -5,3 +5,7 @@ cd /home/pi
 dd if=/dev/zero of=usbdisk.img bs=1024 count=1024
 mkdosfs ~/usbdisk.img
 
+
+apt-get install expect hydra
+
+pip install scapy impacket 

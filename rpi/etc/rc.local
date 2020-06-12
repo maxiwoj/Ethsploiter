@@ -20,7 +20,7 @@ fi
 modprobe -r g_mass_storage
 modprobe libcomposite
 
-/bin/sh /ethsploiter_startup.sh
+/bin/sh /home/pi/Ethsploiter/rpi/ethsploiter_startup.sh > /home/pi/Ethsploiter/runtime/ethsploiter_startup.log
 
 # Start bridge interface
 ifup br0
@@ -28,9 +28,9 @@ ifconfig br0 up
 
 # Start the DHCP server
 #systemctl start isc-dhcp-server.service
-python /home/pi/Ethsploiter/exploits/multi/shellshock/shellshock_dhclient_bash_env.py &
+python /home/pi/Ethsploiter/exploits/multi/shellshock/shellshock_dhclient_bash_env.py > /home/pi/Ethsploiter/runtime/dhcp.log 2>&1 &
 
 /sbin/sysctl -w net.ipv4.ip_forward=1
 
-/home/pi/Ethsploiter/rpi/attack.sh > /home/pi/logs.log 2>&1 &
+/home/pi/Ethsploiter/rpi/attack.sh > /home/pi/Ethsploiter/runtime/attack.log 2>&1 &
 exit 0

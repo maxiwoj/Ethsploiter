@@ -2,3 +2,4 @@
 *.log
 runtime
 __pycache__
+.DS_Store
